@@ -1,6 +1,6 @@
 /*
-    - Create a class to represent the JSON response for the random joke
-    - Call the random joke endpoint of the API (use the proper URL)
+    - Create a class to represent the JSON response for the random dog
+    - Call the random dog endpoint of the API (use the proper URL)
     - Create an object (from the class above) to hold the returned data
         (important so we get good intellisense!)
     - Add the data to the HTML page with DOM manipulation
