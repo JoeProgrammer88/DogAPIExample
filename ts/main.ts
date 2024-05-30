@@ -19,3 +19,44 @@ class RandomImageResponse{
     message: string; // Matching property name with JSON response property name
     status: string;
 }
+
+/**
+ * Set up event handlers when page is loaded
+ */
+document.addEventListener("DOMContentLoaded", function(){
+    // Wire up the Random Dog image button
+    let randomDogButton = document.getElementById("random_image");
+    randomDogButton.addEventListener("click", function(){
+        getRandomDogImage().then(displayDogImage).catch(displayError);
+    });
+});
+
+/**
+ * Calls the dog.ceo random dog image endpoint
+ * and displays the image on the HTML page
+ */
+async function getRandomDogImage(){
+    // Get random dog image and wait for the response
+    let response:Response = await fetch("https://dog.ceo/api/breeds/image/random");
+    console.log(response);
+
+    // If the service did not respond properly
+    if (!response.ok){
+        alert("Could not get a random image, please try again later.");
+        // Throw exception to handle later on
+        throw new Error("HTTP error! Status: " + response.status);
+    }
+
+    // If the service did respond properly, get the json response
+    let data:RandomImageResponse = await response.json();
+    console.log(data);
+    return data;
+}
+
+function displayDogImage(dogData:RandomImageResponse){
+    // Todo: Display image on page
+}
+
+function displayError(error:Error){
+    // Todo: Display nice error message to user
+}
