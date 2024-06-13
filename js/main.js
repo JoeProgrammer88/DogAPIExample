@@ -19,10 +19,19 @@ async function getRandomDogImage() {
 }
 function displayDogImage(dogData) {
     let displayDiv = document.getElementById("display");
-    let img = document.createElement("img");
-    img.src = dogData.message;
-    img.style.width = "300px";
-    displayDiv.insertBefore(img, displayDiv.firstChild);
+    let breedName = getDogBreed(dogData.message);
+    let card = `<div class="card" style="width: 18rem;">
+        <img src="${dogData.message}" class="card-img-top" alt="${breedName}">
+        <div class="card-body">
+            <h5 class="card-title">${breedName}</h5>
+            <p class="card-text">Example picture of a ${breedName}</p>
+            <a href="${dogData.message}" target="_blank" class="btn btn-primary">See full image</a>
+        </div>
+    </div>`;
+    let container = document.createElement("div");
+    container.classList.add("col");
+    container.innerHTML = card;
+    displayDiv.insertBefore(container, displayDiv.firstChild);
 }
 function displayError(error) {
 }
