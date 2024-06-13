@@ -26,3 +26,8 @@ function displayDogImage(dogData) {
 }
 function displayError(error) {
 }
+function getDogBreed(url) {
+    let parts = url.split("/");
+    let breedIndex = parts.indexOf("breeds") + 1;
+    return parts[breedIndex];
+}
